@@ -53,3 +53,5 @@ kubectl version
 # Documentation
 
 [kubernetes documentation](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)
+
+In tutorials, there is some examples, some commands but actually, no comment. That's just memo for me. Maybe I will complete this later... don't know (depending time consuming)

@@ -52,4 +52,4 @@ kubectl version
 
 # Documentation
 
-(RTFM)[https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/]
+[kubernetes documentation](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)

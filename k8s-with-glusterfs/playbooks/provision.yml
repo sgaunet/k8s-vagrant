@@ -1,0 +1,87 @@
+- hosts: gluster
+  name: Gluster configuration
+  sudo: true
+  vars:
+    - gluster_brick_dirs:
+        - /srv/gluster/brick1
+        - /srv/gluster/brick2
+        - /srv/gluster/brick3
+        - /srv/gluster/brick4
+        - /srv/gluster/brick5
+        - /srv/gluster/brick6
+    - gluster_volume: gv0
+    - gluster_replicas: 3
+  tasks:
+    - name: Install software-properties-common
+      apt:
+        name: software-properties-common
+        state: present
+
+    - name: Add an Apt signing key, uses whichever key is at the URL
+      apt_key:
+        url: https://download.gluster.org/pub/gluster/glusterfs/7/rsa.pub
+        state: present
+
+    - apt_repository:
+        repo: ppa:gluster/glusterfs-7
+
+    - name: Stop and disable ufw
+      service: name=ufw state=stopped enabled=no
+
+    - name: Install glusterfs server packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - glusterfs-server
+        - glusterfs-client
+        - attr
+     
+    - name: Ensure the GlusterFS service is running 
+      service: name=glusterd state=started
+
+    - name: Create directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+        recurse: yes
+      with_items:
+        - /srv/gluster/brick1
+        - /srv/gluster/brick2
+        - /srv/gluster/brick3
+        - /srv/gluster/brick4
+        - /srv/gluster/brick5
+        - /srv/gluster/brick6
+
+    
+    - name: Create Gluster volume
+      gluster_volume: bricks={{ gluster_brick_dirs | join(",") }} force=true
+                      cluster={{groups.gluster | join(",")}}
+                      replicas=3 name={{gluster_volume}} state=present
+      run_once: true
+    
+    - name: Start Gluster volume
+      gluster_volume: name={{gluster_volume}} state=started
+
+    - name: Create directories
+      file:
+        path: "/data"
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+        recurse: yes
+
+    - name: Ensure Gluster volume is mounted.
+      mount:
+        name: "/data"
+        src: "{{ inventory_hostname }}:/{{ gluster_volume }}"
+        fstype: glusterfs
+        opts: "defaults,_netdev"
+        state: mounted
+      become: true
+      become_user: root
+      become_method: sudo

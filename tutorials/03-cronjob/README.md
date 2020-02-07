@@ -1,4 +1,10 @@
 
+
+```
+kubectl apply -f cronjob.yaml
+```
+
+
 ```
 kubectl get cronjob
 ```
@@ -17,3 +23,21 @@ $ kubectl  logs hello-1580766840-2glg9
 Mon Feb  3 21:54:12 UTC 2020
 Hello from the Kubernetes cluster
 ```
+
+
+# Persistance
+
+vagrant ssh node-1 -c "sudo mkdir -p /data/03-cronjob/;sudo chmod 777 /data/03-cronjob"
+
+```
+kubectl apply -f cronjob-v2.yaml
+```
+
+ kubectl get cronjob                            
+NAME    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+hello   */1 * * * *   False     0        36s             77s
+
+
+vagrant ssh node-1 -c "cat  /data/03-cronjob/mycronjob.txt"
+
+Hello from the Kubernetes cluster 2020-02-07 20:36

@@ -1,0 +1,28 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+            args:
+            - /bin/sh
+            - -c
+            - echo Hello from the Kubernetes cluster `date "+%Y-%m-%d %H:%M:%S"`> /usr/share/nginx/html/mycronjob.txt
+            volumeMounts:
+                - mountPath: /usr/share/nginx/html
+                  name: test-volume
+          volumes:
+          - name: test-volume
+            hostPath:
+                # chemin du dossier sur l'hôte
+                path: /data/03-cronjob/
+                # ce champ est optionnel
+                type: Directory            
+          restartPolicy: OnFailure

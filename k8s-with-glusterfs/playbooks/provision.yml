@@ -1,6 +1,6 @@
 - hosts: gluster
   name: Gluster configuration
-  sudo: true
+  become: true
   vars:
     - gluster_brick_dirs:
         - /srv/gluster/brick1

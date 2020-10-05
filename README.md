@@ -1,6 +1,6 @@
 # k8s-vagrant
 
-Create a kubernetes cluster (based on informations in https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/ but with modifications to be functionnal ...)
+Create a kubernetes cluster (based on informations in https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/ )
 
 Need :
 
@@ -13,9 +13,20 @@ Need :
 
 ## Create the k8s cluster 
 
+* k8s only :
+
 ```
+cd k8s
 vagrant up
 ```
+
+* k8s cluster with /data synchronised by glusterfs
+
+```
+cd k8s-with-glusterfs
+vagrant up
+```
+
 
 ## Configure kubectl on your laptop
 

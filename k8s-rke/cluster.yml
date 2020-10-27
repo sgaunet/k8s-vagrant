@@ -12,7 +12,7 @@ nodes:
   user: vagrant
   docker_socket: /var/run/docker.sock
   ssh_key: ""
-  ssh_key_path: /home/sylvain/.vagrant.d/insecure_private_key
+  ssh_key_path: ./.vagrant/machines/rke-0/virtualbox/private_key
   ssh_cert: ""
   ssh_cert_path: ""
   labels: {}
@@ -28,7 +28,7 @@ nodes:
   user: vagrant
   docker_socket: /var/run/docker.sock
   ssh_key: ""
-  ssh_key_path: /home/sylvain/.vagrant.d/insecure_private_key
+  ssh_key_path: .vagrant/machines/rke-1/virtualbox/private_key
   ssh_cert: ""
   ssh_cert_path: ""
   labels: {}
@@ -44,7 +44,7 @@ nodes:
   user: vagrant
   docker_socket: /var/run/docker.sock
   ssh_key: ""
-  ssh_key_path: /home/sylvain/.vagrant.d/insecure_private_key
+  ssh_key_path: .vagrant/machines/rke-2/virtualbox/private_key
   ssh_cert: ""
   ssh_cert_path: ""
   labels: {}
@@ -58,7 +58,7 @@ nodes:
   user: vagrant
   docker_socket: /var/run/docker.sock
   ssh_key: ""
-  ssh_key_path: /home/sylvain/.vagrant.d/insecure_private_key
+  ssh_key_path: .vagrant/machines/rke-3/virtualbox/private_key
   ssh_cert: ""
   ssh_cert_path: ""
   labels: {}
@@ -72,7 +72,7 @@ nodes:
   user: vagrant
   docker_socket: /var/run/docker.sock
   ssh_key: ""
-  ssh_key_path: /home/sylvain/.vagrant.d/insecure_private_key
+  ssh_key_path: .vagrant/machines/rke-4/virtualbox/private_key
   ssh_cert: ""
   ssh_cert_path: ""
   labels: {}

@@ -2,7 +2,7 @@ IMAGE_NAME = "bento/ubuntu-18.04"
 N = 5
 
 Vagrant.configure("2") do |config|
-    config.ssh.insert_key = false
+    #config.ssh.insert_key = false
       
     config.vm.define "rke-0" do |node|
         i=0

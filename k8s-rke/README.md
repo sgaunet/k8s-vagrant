@@ -43,6 +43,8 @@ First, create the VM
 vagrant up
 ```
 
+The created VM are ubuntu 18.04 with prerequisites.
+
 Create kubernetes
 
 ```
@@ -59,3 +61,8 @@ Check and list the nodes :
 ```
 kubectl --kubeconfig kube_config_cluster.yml get nodes
 ```
+
+# Install rook/ceph operator :
+
+Stay in this folder and follow the rook/INSTALL.md guide.
+

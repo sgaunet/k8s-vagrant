@@ -30,9 +30,9 @@ Actually, the VMs are
 
 
 Here is a cluster which will recommend a powerful laptop (2Go RAM by VM and 2 vcpu).
-Be carefull, there is also an axtra disk (/dev/sdb) by VM. Every disk is created under the data folder (data/disk-XX.vdi). In the vagranfile, this disk is fixed to 50 Gb. Reduce it you don't have enough spaces.
+Be carefull, there is also an extra disk (/dev/sdb) by VM. Every disk is created under the data folder (data/disk-XX.vdi). In the vagranfile, this disk is fixed to 50 Gb. Reduce it you don't have enough spaces.
 
-Why adding such a disk ? Because after creating the cluster, you will be able to install rook/ceph and it needs some spaces to allow to play with Persistent Volumes. (Will be added soon)
+Why adding such a disk ? Because after creating the cluster, you will be able to install rook/ceph and it needs some spaces to allow to play with Persistent Volumes. 
 
 
 # Create cluster

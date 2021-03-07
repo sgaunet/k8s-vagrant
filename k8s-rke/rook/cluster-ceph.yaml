@@ -6,7 +6,6 @@ metadata:
 spec:
   cephVersion:
     image: ceph/ceph:v14.2
-  allowUnsupported: false
   dataDirHostPath: /var/lib/rook
   skipUpgradeChecks: false
   mon:
@@ -20,8 +19,6 @@ spec:
     rulesNamespace: rook-ceph
   network:
     hostNetwork: false
-  rbdMirroring:
-    workers: 0
   storage:
     useAllNodes: true
     useAllDevices: true

@@ -1,0 +1,25 @@
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  name: rook-ceph
+  namespace: rook-ceph
+spec:
+  cephVersion:
+    image: ceph/ceph:v14.2
+  dataDirHostPath: /var/lib/rook
+  skipUpgradeChecks: false
+  mon:
+    count: 3
+    allowMultiplePerNode: false
+  dashboard:
+    enabled: true
+    ssl: true
+  monitoring:
+    enabled: false
+    rulesNamespace: rook-ceph
+  network:
+    hostNetwork: false
+  storage:
+    useAllNodes: true
+    useAllDevices: true
+    deviceFilter: "sdb"
